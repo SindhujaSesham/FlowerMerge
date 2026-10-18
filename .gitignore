@@ -4,3 +4,7 @@
 # Godot 3+ specific
 .import/
 export.cfg
+
+# Ignore macOS system files
+.DS_Store
+**/.DS_Store
