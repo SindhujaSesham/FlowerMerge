@@ -1,6 +1,26 @@
-[gd_scene format=3 uid="uid://y87xq2fh4ypr"]
+[gd_scene format=4 uid="uid://y87xq2fh4ypr"]
 
-[ext_resource type="Script" uid="uid://0sw74rd12oal" path="res://scenes/main/main.gd" id="1_hyk8p"]
+[ext_resource type="Script" path="res://scripts/game_board.gd" id="1_iuonh"]
+[ext_resource type="Texture2D" path="res://assets/SAMPLE PACK - Pixel Gnome Crop Pack/Dirt_Tile.png" id="2_k2fmo"]
 
-[node name="Main" type="Node2D" unique_id=1210445583]
-script = ExtResource("1_hyk8p")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p2sq2"]
+texture = ExtResource("2_k2fmo")
+texture_region_size = Vector2i(48, 48)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_2mynd"]
+tile_size = Vector2i(48, 48)
+sources/0 = SubResource("TileSetAtlasSource_p2sq2")
+
+[node name="GameBoard" type="Node2D" unique_id=1762174967]
+script = ExtResource("1_iuonh")
+
+[node name="Node2D" type="Node2D" parent="." unique_id=257135966]
+
+[node name="Flowers" type="Node2D" parent="Node2D" unique_id=614517884]
+
+[node name="GrassLayer" type="TileMapLayer" parent="Node2D" unique_id=1239023783]
+tile_map_data = PackedByteArray("AAD+//z/AAAAAAAAAAD+//3/AAAAAAAAAAD+//7/AAAAAAAAAAD+////AAAAAAAAAAD+/wAAAAAAAAAAAAD///z/AAAAAAAAAAD///3/AAAAAAAAAAD///7/AAAAAAAAAAD/////AAAAAAAAAAD//wAAAAAAAAAAAAAAAPz/AAAAAAAAAAAAAP3/AAAAAAAAAAAAAP7/AAAAAAAAAAAAAP//AAAAAAAAAAAAAAAAAAAAAAAAAAABAPz/AAAAAAAAAAABAP3/AAAAAAAAAAABAP7/AAAAAAAAAAABAP//AAAAAAAAAAABAAAAAAAAAAAAAAACAPz/AAAAAAAAAAACAP3/AAAAAAAAAAACAP7/AAAAAAAAAAACAP//AAAAAAAAAAACAAAAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_2mynd")
+
+[node name="BorderLayer" type="TileMapLayer" parent="Node2D" unique_id=2027960591]

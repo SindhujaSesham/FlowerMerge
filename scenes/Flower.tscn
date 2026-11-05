@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://18y844ey4f71"]
+
+[ext_resource type="Script" path="res://scripts/Flower.gd" id="1_rvtjt"]
+[ext_resource type="Texture2D" path="res://assets/SAMPLE PACK - Pixel Gnome Crop Pack/Individual Files/Potato/3 - Potato Mid.png" id="2_nagv3"]
+[ext_resource type="Texture2D" path="res://assets/flowers/Flowers_Separated/Flowers_Without_Outline/Tulip.png" id="3_xetpm"]
+[ext_resource type="Texture2D" path="res://assets/flowers/Flowers_Separated/Flowers_Without_Outline/Rose.png" id="4_d72yg"]
+[ext_resource type="Texture2D" path="res://assets/flowers/Flowers_Separated/Flowers_Without_Outline/Sunflower.png" id="5_2ba5o"]
+[ext_resource type="Texture2D" path="res://assets/flowers/Flowers_Separated/Flowers_Without_Outline/Orchid.png" id="6_0squc"]
+[ext_resource type="Texture2D" path="res://assets/flowers/Flowers_Separated/Flowers_Without_Outline/Poppy.png" id="7_dfbxx"]
+[ext_resource type="Texture2D" path="res://assets/flowers/Flowers_Separated/Flowers_Without_Outline/Lily.png" id="8_nfv4u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bmi72"]
+size = Vector2(22, 30)
+
+[node name="Flower" type="Node2D" unique_id=1469173651]
+script = ExtResource("1_rvtjt")
+flower_textures = Array[Texture2D]([ExtResource("2_nagv3"), ExtResource("3_xetpm"), ExtResource("4_d72yg"), ExtResource("5_2ba5o"), ExtResource("6_0squc"), ExtResource("7_dfbxx"), ExtResource("8_nfv4u")])
+
+[node name="Area2D" type="Area2D" parent="." unique_id=2126428612]
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=733300516]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=916753042]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_bmi72")
