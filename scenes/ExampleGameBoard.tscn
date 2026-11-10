@@ -1,3 +1,18 @@
-[gd_scene format=3 uid="uid://5rvi8jfbda38"]
+[gd_scene format=3 uid="uid://b7i1ampwqrmrd"]
+
+[ext_resource type="Texture2D" path="res://assets/flowers/Flowers_Separated/Flowers_With_Ouline/SunflowerOUTLINED.png" id="1_68u3u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2dfg2"]
+size = Vector2(19, 32)
 
 [node name="ExampleGameBoard" type="Node2D" unique_id=1201406519]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=2060882492]
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=171260211]
+position = Vector2(18, 14)
+texture = ExtResource("1_68u3u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1536831110]
+position = Vector2(17, 14)
+shape = SubResource("RectangleShape2D_2dfg2")

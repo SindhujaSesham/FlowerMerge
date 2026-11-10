@@ -21,7 +21,7 @@ signal drag_ended(flower, drop_position)
 # The index of each flower matches its flower_level.
 var flower_types = [
 	"seedling", # 0
-	"tulipe", # 1
+	"tulip", # 1
 	"rose", # 2
 	"sunflower", # 3
 	"orchid", # 4
@@ -109,3 +109,9 @@ func _input(event):
 			# Notify the GameBoard where the flower was dropped.
 			# The GameBoard will decide whether to merge or reset it.
 			drag_ended.emit(self, global_position)
+
+# Returns the flower's type based on its current level.
+# Used by the order system to check which flower was delivered.
+func get_flower_type() -> String:
+	return flower_types[flower_level]
+	
