@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://c3ha7xgjswfs6"]
+
+[ext_resource type="Script" uid="uid://chlen6sd3t0tf" path="res://game.gd" id="1_xkndl"]
+[ext_resource type="PackedScene" uid="uid://cn14sgb38jukb" path="res://FlowerCell.tscn" id="2_u44n3"]
+
+[node name="Game" type="Control" unique_id=840233965]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xkndl")
+
+[node name="FlowerGrid" type="GridContainer" parent="." unique_id=1543933293]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/h_separation = -5
+theme_override_constants/v_separation = 6
+columns = 5
+
+[node name="FlowerCell" parent="FlowerGrid" unique_id=1473863572 instance=ExtResource("2_u44n3")]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+
+[node name="FlowerCell2" parent="FlowerGrid" unique_id=191536683 instance=ExtResource("2_u44n3")]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+
+[node name="FlowerCell3" parent="FlowerGrid" unique_id=1631970061 instance=ExtResource("2_u44n3")]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+
+[node name="FlowerCell4" parent="FlowerGrid" unique_id=754774643 instance=ExtResource("2_u44n3")]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+
+[node name="FlowerCell5" parent="FlowerGrid" unique_id=828278497 instance=ExtResource("2_u44n3")]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2

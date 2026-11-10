@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://cn14sgb38jukb"]
+
+[ext_resource type="Texture2D" uid="uid://3fe6le4c6j87" path="res://assets/SlotDefaultl1_cream.png" id="1_1o8xp"]
+[ext_resource type="Script" uid="uid://mpd8yv5mq8b4" path="res://flower_cell.gd" id="1_np04c"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jfmy4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g2ina"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_55o84"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3kjcw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2lklv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_errjl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_75s7h"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1xp1h"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dxwkx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o4yhq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8aokk"]
+
+[node name="FlowerCell" type="Control" unique_id=1473863572]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -640.0
+offset_bottom = -1200.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_np04c")
+
+[node name="WoodenBackground" type="TextureRect" parent="." unique_id=354301133]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_1o8xp")
+stretch_mode = 5
+
+[node name="CellButton" type="Button" parent="." unique_id=1840966036]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_jfmy4")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_g2ina")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_55o84")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_3kjcw")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_2lklv")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_errjl")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_75s7h")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_1xp1h")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_dxwkx")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_o4yhq")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8aokk")
+
+[connection signal="pressed" from="CellButton" to="." method="_on_cell_button_pressed"]
