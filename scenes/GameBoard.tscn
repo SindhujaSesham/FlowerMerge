@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://1vguia06v4g4" path="res://scripts/game_board.gd" id="1_v0kx6"]
 [ext_resource type="Texture2D" uid="uid://vkqdrh1gfoog" path="res://assets/SAMPLE PACK - Pixel Gnome Crop Pack/Dirt_Tile.png" id="2_fbkij"]
+[ext_resource type="Script" uid="uid://bloinlgbeodnl" path="res://scripts/grass_layer.gd" id="3_fbkij"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p2sq2"]
 texture = ExtResource("2_fbkij")
@@ -22,5 +23,6 @@ script = ExtResource("1_v0kx6")
 [node name="GrassLayer" type="TileMapLayer" parent="Node2D" unique_id=1239023783]
 tile_map_data = PackedByteArray("AAD+//z/AAAAAAAAAAD+//3/AAAAAAAAAAD+//7/AAAAAAAAAAD+////AAAAAAAAAAD+/wAAAAAAAAAAAAD///z/AAAAAAAAAAD///3/AAAAAAAAAAD///7/AAAAAAAAAAD/////AAAAAAAAAAD//wAAAAAAAAAAAAAAAPz/AAAAAAAAAAAAAP3/AAAAAAAAAAAAAP7/AAAAAAAAAAAAAP//AAAAAAAAAAAAAAAAAAAAAAAAAAABAPz/AAAAAAAAAAABAP3/AAAAAAAAAAABAP7/AAAAAAAAAAABAP//AAAAAAAAAAABAAAAAAAAAAAAAAACAPz/AAAAAAAAAAACAP3/AAAAAAAAAAACAP7/AAAAAAAAAAACAP//AAAAAAAAAAACAAAAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_2mynd")
+script = ExtResource("3_fbkij")
 
 [node name="BorderLayer" type="TileMapLayer" parent="Node2D" unique_id=2027960591]
