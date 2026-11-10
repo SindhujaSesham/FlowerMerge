@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://pi4unqfsbm3h"]
 
-[ext_resource type="Script" path="res://scripts/game_board.gd" id="1_v0kx6"]
-[ext_resource type="Texture2D" path="res://assets/SAMPLE PACK - Pixel Gnome Crop Pack/Dirt_Tile.png" id="2_fbkij"]
+[ext_resource type="Script" uid="uid://1vguia06v4g4" path="res://scripts/game_board.gd" id="1_v0kx6"]
+[ext_resource type="Texture2D" uid="uid://vkqdrh1gfoog" path="res://assets/SAMPLE PACK - Pixel Gnome Crop Pack/Dirt_Tile.png" id="2_fbkij"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p2sq2"]
 texture = ExtResource("2_fbkij")
