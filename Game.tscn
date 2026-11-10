@@ -23,19 +23,3 @@ columns = 5
 [node name="FlowerCell" parent="FlowerGrid" unique_id=1473863572 instance=ExtResource("2_u44n3")]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
-
-[node name="FlowerCell2" parent="FlowerGrid" unique_id=191536683 instance=ExtResource("2_u44n3")]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-
-[node name="FlowerCell3" parent="FlowerGrid" unique_id=1631970061 instance=ExtResource("2_u44n3")]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-
-[node name="FlowerCell4" parent="FlowerGrid" unique_id=754774643 instance=ExtResource("2_u44n3")]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-
-[node name="FlowerCell5" parent="FlowerGrid" unique_id=828278497 instance=ExtResource("2_u44n3")]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
