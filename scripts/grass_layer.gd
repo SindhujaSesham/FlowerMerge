@@ -39,18 +39,8 @@ func cell_to_world_position(cell: Vector2i) -> Vector2:
 # Checks whether a cell belongs to the playable
 # grass area of the board.
 func is_valid_cell(cell: Vector2i) -> bool:
-
-	# TODO:
-	# 1. Check whether a grass tile exists at this cell.
-	# 2. Make sure the tile belongs to the playable area.
-	# 3. Return true if the cell is playable.
-	#
-	# Use get_cell_source_id().
-	#
-	# An empty tile normally has source ID -1.
-
-	return false
-
+	var source_id = get_cell_source_id(cell)
+	return source_id != -1
 
 # Returns the dimensions of the playable grid.
 # Example: Vector2i(5, 5) for a 5x5 board.
