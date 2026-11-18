@@ -45,19 +45,11 @@ func is_valid_cell(cell: Vector2i) -> bool:
 # Returns the dimensions of the playable grid.
 # Example: Vector2i(5, 5) for a 5x5 board.
 func get_grid_size() -> Vector2i:
+	var used_rect = get_used_rect()
+	var width = used_rect.size.x
+	var height = used_rect.size.y
 
-	# TODO:
-	# 1. Determine the width of the playable grid.
-	# 2. Determine the height of the playable grid.
-	# 3. Return both values as a Vector2i.
-	#
-	# Use get_used_rect() for the tile bounds.
-	#
-	# Exclude non-playable decorative tiles
-	# when determining the playable grid size.
-
-	return Vector2i.ZERO
-
+	return Vector2i(width, height)
 
 # ==================================================
 # VALID CELL SELECTION
