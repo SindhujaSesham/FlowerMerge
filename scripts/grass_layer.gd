@@ -59,24 +59,14 @@ func get_grid_size() -> Vector2i:
 # Used for finding spawning positions and
 # determining the playable board area.
 func get_valid_cells() -> Array[Vector2i]:
+	var valid_cells: Array[Vector2i] = []
+	var used_cells = get_used_cells()
+	
+	for cell in used_cells:
+		if is_valid_cell(cell):
+			valid_cells.append(cell)
 
-	# TODO:
-	# 1. Create an array to store valid cells.
-	# 2. Get the cells used by the grass layer.
-	# 3. Loop through those cells.
-	# 4. Check each cell using is_valid_cell().
-	# 5. Add valid cells to the array.
-	# 6. Return the completed array.
-	#
-	# Use:
-	# - get_used_cells()
-	# - is_valid_cell()
-	#
-	# Do not check whether flowers occupy these cells.
-	# GameBoard handles flower occupancy.
-
-	return []
-
+	return valid_cells
 
 # Returns a random playable cell from the grass layer.
 # Used when generating new flower positions.
