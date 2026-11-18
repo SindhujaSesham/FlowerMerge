@@ -71,17 +71,9 @@ func get_valid_cells() -> Array[Vector2i]:
 # Returns a random playable cell from the grass layer.
 # Used when generating new flower positions.
 func get_random_valid_cell():
-
-	# TODO:
-	# 1. Get all playable cells using get_valid_cells().
-	# 2. Check whether the array contains any cells.
-	# 3. Select a random cell from the array.
-	# 4. Return that cell.
-	# 5. Return null if no playable cells exist.
-	#
-	# Use Array.pick_random().
-	#
-	# GameBoard checks whether the selected
-	# cell is occupied before spawning a flower.
-
-	return null
+	var playable_cells = get_valid_cells()
+	
+	if playable_cells.is_empty():
+		return null
+	
+	return playable_cells.pick_random()
