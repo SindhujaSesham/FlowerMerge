@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://bnfphvv8j122q"]
+
+[ext_resource type="Script" uid="uid://b7jih3y7q726s" path="res://menu.gd" id="1_raona"]
+[ext_resource type="Texture2D" uid="uid://bqkct68ejgexh" path="res://scenes/main/3167237.jpg" id="2_lapsr"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tvphf"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fpfl7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jgvmt"]
+bg_color = Color(0.6862745, 0.5529412, 0.62352943, 0.03529412)
+
+[node name="Menu" type="Node2D" unique_id=767619015]
+script = ExtResource("1_raona")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1963869767]
+offset_right = 730.0
+offset_bottom = 1547.0
+texture = ExtResource("2_lapsr")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="." unique_id=1243006514]
+offset_left = 89.0
+offset_top = 245.0
+offset_right = 605.0
+offset_bottom = 365.0
+theme_override_colors/font_color = Color(0.9707455, 0.53371036, 0.6851119, 0.93333334)
+theme_override_font_sizes/font_size = 50
+text = "FLOWER MERGE"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1998405136]
+offset_left = 147.0
+offset_top = 338.0
+offset_right = 491.0
+offset_bottom = 694.0
+theme_override_constants/separation = 30
+
+[node name="Button" type="Button" parent="VBoxContainer" unique_id=64131572]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8745098, 0.41568628, 0.8745098, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxTexture_tvphf")
+text = "START GAME "
+
+[node name="Button2" type="Button" parent="VBoxContainer" unique_id=1176433928]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8745098, 0.41568628, 0.85882354, 0.94509804)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxTexture_fpfl7")
+text = "OPTIONS"
+
+[node name="Button3" type="Button" parent="VBoxContainer" unique_id=1288276443]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8745098, 0.18431373, 0.8745098, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_jgvmt")
+text = "EXIT"
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button3" to="." method="_on_button_3_pressed"]
