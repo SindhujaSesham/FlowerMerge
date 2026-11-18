@@ -1,5 +1,5 @@
 
-extends Area2D
+extends Node2D
 
 # Signals tell the GameBoard when a flower starts or stops being dragged.
 # The GameBoard can use these to handle merging.
@@ -40,13 +40,14 @@ var original_position: Vector2
 
 # References to the child nodes in Flower.tscn.
 # @onready waits until the node is ready before accessing them.
-@onready var sprite = $Sprite2D
-@onready var collision = $CollisionShape2D
+@onready var sprite = $Area2D/Sprite2D
+@onready var collision = $Area2D/CollisionShape2D
 
 
 # Runs automatically when the flower enters the scene tree.
 func _ready():
 	update_appearance()
+	$Area2D.input_event.connect(_on_area_input_event)
 
 
 # Updates the flower's image based on its current level.
@@ -63,7 +64,7 @@ func update_appearance():
 
 # Called when an input event occurs on this flower's collision area.
 # Used to detect when the player clicks or taps the flower.
-func _input_event(viewport, event, shape_idx):
+func on_area_input_event(viewport, event, shape_idx):
 
 	# Check whether the input is a mouse button event.
 	if event is InputEventMouseButton:
