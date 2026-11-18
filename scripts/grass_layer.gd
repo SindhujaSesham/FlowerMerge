@@ -20,18 +20,9 @@ extends TileMapLayer
 # Converts a world position into a grid cell.
 # Used when a flower is dropped onto the board.
 func world_position_to_cell(world_position: Vector2) -> Vector2i:
-
-	# TODO:
-	# 1. Convert the world position into local coordinates.
 	var local_position = to_local(world_position)
-	# 2. Convert the local coordinates into a grid cell.
 	var cell = local_to_map(local_position)
-	# 3. Return the grid cell.
 	return cell
-	#
-	# Use:
-	# - to_local()
-	# - local_to_map()
 
 # Returns the world position at the center of a tile.
 # Used to position flowers correctly on the grid.
