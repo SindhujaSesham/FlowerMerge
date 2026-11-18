@@ -27,20 +27,10 @@ func world_position_to_cell(world_position: Vector2) -> Vector2i:
 # Returns the world position at the center of a tile.
 # Used to position flowers correctly on the grid.
 func cell_to_world_position(cell: Vector2i) -> Vector2:
+	var local_position = map_to_local(cell)
+	var world_position = to_global(local_position)
 
-	# TODO:
-	# 1. Convert the grid cell into local coordinates.
-	# 2. Convert the local coordinates into world coordinates.
-	# 3. Return the world position.
-	#
-	# Use:
-	# - map_to_local()
-	# - to_global()
-	#
-	# map_to_local() returns the center of the cell.
-
-	return Vector2.ZERO
-
+	return world_position
 
 # ==================================================
 # PLAYABLE GRID
