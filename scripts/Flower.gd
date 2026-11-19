@@ -46,10 +46,10 @@ var original_position: Vector2
 
 # Runs automatically when the flower enters the scene tree.
 func _ready():
-	print("Flower ready!")
+	#print("Flower ready!")
 	update_appearance()
 	$Area2D.input_event.connect(_on_area_input_event)
-	print("Area2D signal connected!")
+	#print("Area2D signal connected!")
 
 
 # Updates the flower's image based on its current level.
@@ -67,7 +67,7 @@ func update_appearance():
 # Called when an input event occurs on this flower's collision area.
 # Used to detect when the player clicks or taps the flower.
 func _on_area_input_event(viewport, event, shape_idx):
-	print("Area2D received event: ", event)
+	#print("Area2D received event: ", event)
 	
 	# Check whether the input is a mouse button event.
 	if event is InputEventMouseButton:

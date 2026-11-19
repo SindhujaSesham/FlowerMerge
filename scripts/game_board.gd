@@ -11,6 +11,10 @@ var flowers_by_cell: Dictionary = {}
 @onready var grass_layer = $Node2D/GrassLayer
 @onready var flowers_container = $Node2D/Flowers
 
+@export var orders_area: Control
+@export var order_label: Label
+@export var completed_orders_label: Label
+
 #Variables 
 var random_x = randi_range(0, BOARD_SIZE - 1)
 var random_y = randi_range(0, BOARD_SIZE - 1)
@@ -34,6 +38,13 @@ func _ready()-> void:
 	
 	for i in range(STARTING_FLOWERS):
 		_spawn_random_flower_types()
+	
+	if orders_area != null:
+		print("OrdersArea connected successfully!")
+	else:
+		print("OrdersArea is not connected.")
+	
+	generate_new_order()
 	
 func _initialize_game_board() -> void:
 	flowers_by_cell.clear()
@@ -68,10 +79,27 @@ func _merge_start(flower):
 
 #Flower Dragging		
 func _on_flower_drag_ended(flower, drop_position: Vector2) -> void:
+	print("FLOWER DRAG ENDED")
+	print("Drop position: ", drop_position)
+
+	if orders_area == null:
+		print("ERROR: OrdersArea is not connected!")
+	else:
+		print("Order area position: ", orders_area.get_global_rect())
+		print("Mouse position: ", orders_area.get_global_mouse_position())
+
 	if is_flower_dropped_on_order(drop_position):
+		print("SUCCESS: Flower dropped on order!")
+
 		if try_deliver_flower_to_order(flower, drop_position):
 			return
+
 	handle_flower_drop(flower, drop_position)
+	
+	#if is_flower_dropped_on_order(drop_position):
+		#if try_deliver_flower_to_order(flower, drop_position):
+			#return
+	#handle_flower_drop(flower, drop_position)
 	
 #Flower Placement
 func handle_flower_drop(flower, world_position: Vector2) -> void:
@@ -148,7 +176,7 @@ func merge_flowers(first_flower, second_flower, target_cell: Vector2i) -> void:
 		refill_flowers()
 # Creates a new flower in the specified grid cell.
 func spawn_flower(flower_level: int, cell: Vector2i) -> void:
-	print("Spawning flower at: ", cell)
+	#print("Spawning flower at: ", cell)
 	
 	var flower = FLOWER_SCENE.instantiate()
 
@@ -156,9 +184,9 @@ func spawn_flower(flower_level: int, cell: Vector2i) -> void:
 	
 	flowers_container.add_child(flower)
 	
-	print("Spawned flower script: ", flower.get_script().resource_path)
-	print("Flower inside scene tree: ", flower.is_inside_tree())
-	print("Flower ready: ", flower.is_node_ready())
+	#print("Spawned flower script: ", flower.get_script().resource_path)
+	#print("Flower inside scene tree: ", flower.is_inside_tree())
+	#print("Flower ready: ", flower.is_node_ready())
 	
 	flower.global_position = grass_layer.cell_to_world_position(cell)
 	
@@ -186,18 +214,62 @@ func refill_flowers() -> void:
 	while flowers_by_cell.size() < MIN_FLOWERS:
 		_spawn_random_flower_types()
 #Order System 
-var order
-var drop_area
+var requested_flower_level: int = 1
+var requested_amount: int = 1
+var completed_orders: int = 0
+var delivered_amount: int = 0
+
+const FLOWER_NAMES = [
+	"Seedling", # 0
+	"Tulip", # 1
+	"Rose", # 2
+	"Sunflower", # 3
+	"Orchid", # 4
+	"Poppy", # 5
+	"Lily" # 6
+]
+
+
+func generate_new_order() -> void:
+	requested_flower_level = randi_range(0, 2)
+	requested_amount = randi_range(1, 3)
+	delivered_amount = 0
+
+	update_order_ui()
+
+
+
 func is_flower_dropped_on_order(drop_position: Vector2) -> bool:
-	if order == null:
+	if orders_area == null:
 		return false
-	drop_area = order
-	return true
+	
+	return orders_area.get_global_rect().has_point(
+		orders_area.get_global_mouse_position()
+	)
 	
 # Deliver a flower to an active order
 func try_deliver_flower_to_order(flower, drop_position: Vector2) -> bool:
-	return false
-	#TODO
+	if flower.flower_level != requested_flower_level:
+		print("Wrong flower level")
+		return false
+	
+	delivered_amount += 1
+	update_order_ui()
+	print("Order progress: ", delivered_amount, "/", requested_amount)
+	
+	remove_delivered_flower(flower)
+	refill_flowers()
+	if delivered_amount >= requested_amount:
+		complete_order()
+	return true
+
+func complete_order() -> void:
+	completed_orders += 1
+	print("ORDER COMPLETE!")
+
+	# Start another order
+	generate_new_order()
+	print("New order started!")
 	
 func get_cell_of_flower(flower):
 	
@@ -218,3 +290,10 @@ func remove_delivered_flower(flower) -> void:
 	if cell != null:
 		remove_flower_from_cell(cell)
 	flower.queue_free()
+	
+
+func update_order_ui() -> void:
+	var flower_name = FLOWER_NAMES[requested_flower_level]
+	
+	order_label.text = str(requested_amount - delivered_amount) + " " + flower_name + " Please!"
+	completed_orders_label.text = "Orders completed: " + str(completed_orders)
