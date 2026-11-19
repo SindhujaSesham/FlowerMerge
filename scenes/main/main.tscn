@@ -16,6 +16,7 @@ grow_vertical = 2
 layout_mode = 0
 offset_right = 719.0
 offset_bottom = 1285.0
+mouse_filter = 2
 color = Color(0.8627451, 0.6509804, 0.6784314, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="Control" unique_id=1339645249]
@@ -41,6 +42,7 @@ offset_left = -3.0
 offset_top = 593.0
 offset_right = 730.0
 offset_bottom = 1293.0
+mouse_filter = 2
 color = Color(0.37148497, 0.211867, 0.11266393, 1)
 
 [node name="PlayableBoard" parent="Control/MarginContainer/VBoxContainer/GameArea" unique_id=538988390 instance=ExtResource("1_hyk8p")]

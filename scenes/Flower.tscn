@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://le56smfko15u" path="res://assets/flowers/Flowers_Separated/Flowers_Without_Outline/Lily.png" id="8_nfv4u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bmi72"]
-size = Vector2(22, 30)
+size = Vector2(24, 30)
 
 [node name="Flower" type="Node2D" unique_id=1469173651]
 script = ExtResource("1_rvtjt")
@@ -22,4 +22,5 @@ flower_textures = Array[Texture2D]([ExtResource("2_nagv3"), ExtResource("3_xetpm
 scale = Vector2(1.5, 1.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=916753042]
+position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_bmi72")

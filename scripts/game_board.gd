@@ -2,6 +2,8 @@ extends Node2D
 
 #Game Board Properties
 const BOARD_SIZE = 5
+const STARTING_FLOWERS = 8
+const MIN_FLOWERS = 6
 const FLOWER_SCENE = preload("res://scenes/Flower.tscn")
 
 var flowers_by_cell: Dictionary = {}
@@ -29,8 +31,9 @@ func _spawn_random_flower_types() -> void:
 
 func _ready()-> void:
 	_initialize_game_board()
-	_spawn_random_flower_types()
-	_spawn_random_flower_types()
+	
+	for i in range(STARTING_FLOWERS):
+		_spawn_random_flower_types()
 	
 func _initialize_game_board() -> void:
 	flowers_by_cell.clear()
@@ -142,8 +145,7 @@ func merge_flowers(first_flower, second_flower, target_cell: Vector2i) -> void:
 		
 		spawn_flower(upgraded_level, target_cell)
 		
-		_spawn_random_flower_types()
-		
+		refill_flowers()
 # Creates a new flower in the specified grid cell.
 func spawn_flower(flower_level: int, cell: Vector2i) -> void:
 	print("Spawning flower at: ", cell)
@@ -154,20 +156,24 @@ func spawn_flower(flower_level: int, cell: Vector2i) -> void:
 	
 	flowers_container.add_child(flower)
 	
+	print("Spawned flower script: ", flower.get_script().resource_path)
+	print("Flower inside scene tree: ", flower.is_inside_tree())
+	print("Flower ready: ", flower.is_node_ready())
+	
 	flower.global_position = grass_layer.cell_to_world_position(cell)
 	
 	flowers_by_cell[cell] = flower
 	
 	flower.drag_started.connect(_merge_start)
 	flower.drag_ended.connect(_on_flower_drag_ended)
-	print("Flower cell: ", cell)
-	print("Flower global position: ", flower.global_position)
-	print("GrassLayer global position: ", grass_layer.global_position)
-	print("Flower visible: ", flower.visible)
-	print("Flower level: ", flower.flower_level)
-	print("Sprite texture: ", flower.sprite.texture)
-	print("Expected tile center: ", grass_layer.cell_to_world_position(cell))
-	print("Actual sprite center: ", flower.sprite.global_position)
+	#print("Flower cell: ", cell)
+	#print("Flower global position: ", flower.global_position)
+	#print("GrassLayer global position: ", grass_layer.global_position)
+	#print("Flower visible: ", flower.visible)
+	#print("Flower level: ", flower.flower_level)
+	#print("Sprite texture: ", flower.sprite.texture)
+	#print("Expected tile center: ", grass_layer.cell_to_world_position(cell))
+	#print("Actual sprite center: ", flower.sprite.global_position)
 #Merging Logic	
 #func _game_play(flower, x, y):
 	#if flower == null or merged_flower == null:
@@ -176,7 +182,9 @@ func spawn_flower(flower_level: int, cell: Vector2i) -> void:
 		#return false
 	#return true
 		
-
+func refill_flowers() -> void:
+	while flowers_by_cell.size() < MIN_FLOWERS:
+		_spawn_random_flower_types()
 #Order System 
 var order
 var drop_area
@@ -197,13 +205,7 @@ func get_cell_of_flower(flower):
 		if flowers_by_cell[cell] == flower:
 			return cell
 	return null
-	"""
-	for x in range(BOARD):
-		for y in range(BOARD):
-			if flowers_by_cell[Vector2i(x, y)] == flower:
-				return Vector2i(x,y)
-	return null
-	"""
+	
 func remove_flower_from_cell(cell: Vector2i) -> void:
 	flowers_by_cell.erase(cell)
 	

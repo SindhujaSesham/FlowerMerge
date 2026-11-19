@@ -46,8 +46,10 @@ var original_position: Vector2
 
 # Runs automatically when the flower enters the scene tree.
 func _ready():
+	print("Flower ready!")
 	update_appearance()
 	$Area2D.input_event.connect(_on_area_input_event)
+	print("Area2D signal connected!")
 
 
 # Updates the flower's image based on its current level.
@@ -65,7 +67,8 @@ func update_appearance():
 # Called when an input event occurs on this flower's collision area.
 # Used to detect when the player clicks or taps the flower.
 func _on_area_input_event(viewport, event, shape_idx):
-
+	print("Area2D received event: ", event)
+	
 	# Check whether the input is a mouse button event.
 	if event is InputEventMouseButton:
 
@@ -81,6 +84,7 @@ func _on_area_input_event(viewport, event, shape_idx):
 			# Notify the GameBoard that dragging has started.
 			drag_started.emit(self)
 
+			print("Flower clicked!")
 			# Mark the event as handled.
 			get_viewport().set_input_as_handled()
 
@@ -88,6 +92,10 @@ func _on_area_input_event(viewport, event, shape_idx):
 # Called whenever an input event happens.
 # Handles moving the flower and detecting when it is released.
 func _input(event):
+	
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			print("Mouse click detected by Flower.gd")
 
 	# Ignore input unless this flower is being dragged.
 	if not is_dragging:
@@ -95,15 +103,13 @@ func _input(event):
 
 	# If the mouse moves while dragging, move the flower with it.
 	if event is InputEventMouseMotion:
-
-		# Use global coordinates so the flower follows the mouse.
 		global_position = get_global_mouse_position()
 
 	# Check whether the player released the mouse button.
 	elif event is InputEventMouseButton:
 
 		if event.button_index == MOUSE_BUTTON_LEFT and not event.pressed:
-
+			
 			# Stop dragging the flower.
 			is_dragging = false
 
