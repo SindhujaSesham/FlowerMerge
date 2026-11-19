@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://xgkneuqk1aio"]
+
+[ext_resource type="Script" uid="uid://b7jih3y7q726s" path="res://scripts/menu.gd" id="1_h727b"]
+[ext_resource type="Texture2D" uid="uid://bqkct68ejgexh" path="res://scenes/main/3167237.jpg" id="2_1rl2y"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tvphf"]
+
+[node name="option" type="Node2D" unique_id=767619015]
+script = ExtResource("1_h727b")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1963869767]
+offset_right = 730.0
+offset_bottom = 1547.0
+texture = ExtResource("2_1rl2y")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="." unique_id=1243006514]
+offset_left = 108.0
+offset_top = 233.0
+offset_right = 624.0
+offset_bottom = 353.0
+theme_override_colors/font_color = Color(0.9707455, 0.53371036, 0.6851119, 0.93333334)
+theme_override_font_sizes/font_size = 50
+text = "OPTIONS"
+horizontal_alignment = 1
+
+[node name="BACK" type="Button" parent="Label" unique_id=64131572]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.583
+anchor_right = 0.5
+anchor_bottom = 0.583
+offset_left = -169.0
+offset_top = 69.04
+offset_right = 175.0
+offset_bottom = 111.04
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.8745098, 0.41568628, 0.8745098, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxTexture_tvphf")
+text = "BACK "
+
+[connection signal="pressed" from="Label/BACK" to="." method="_on_back_pressed"]
